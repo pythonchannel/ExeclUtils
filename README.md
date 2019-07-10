@@ -1,139 +1,79 @@
-### 封装了一个Execl的工具类， 手把手教你学会封装
 
-在程序设计中永远有一个思想就是 **write once run anywhere！**
+## 个人介绍
 
-封装思想在我们编程工作中是非常重要的，有的人工作了好多年，还不会如何封装代码，写出来的代码可读性与可维护性极差，跟他们一个做项目是非常累的，但跟大牛合作，他们写的工具类会写得非常好，你只需要按工具类的要求传入数据，它就会给你返回结果. 今天我们就来学习一把如何封装.
+众所周知湖北黄冈在国内的教育还算不错，而我就是来自黄冈的，我的朋友们都叫我龙哥. 其实也比大部分程序办的朋友年龄要大一些.
 
+09年底我只身一人来深圳，到如今快10年了，回头看我经历的，基本上一个互联网人的经历的东西我都差不多经历过，大中小创业公司都待过，算是一个不折不扣的老鸟.
 
-今天用一个小的案例来教大家学会封装！
+这些年结婚买房二胎，基本靠自己一个人，双方家庭也几乎帮不上忙，我老婆全职带娃，压力着实大，一直在想完全靠上班，不知道什么时候是个头，我需要做一些事情出来. [农村出身程序员，深漂结婚生子买房，只要努力，一切都会有！](https://mp.weixin.qq.com/s/JF3poOJHPcL1P8vFiWQh5g)
 
-封装的精髓我是这样理解的: 
+维持现状是等死，跳出现状或许会有转机，就像今年NBA猛龙夺冠一样，喜欢看NBA的朋友应该都懂这个梗. 我和朋友创业了.
 
-**这里有一个黑匣子，按黑匣子的指令，输入它需要的东西，然后得到我们想要的东西，具体黑匣子做了什么，不用关心。 我们封装任何东西都是这个道理，把握好输入输出这两个点，一切就好办了!**
+在全民创业，万众创新的浪潮下，在14年10月和一位土豪老板创业, 但这些年公司是烧了千万，期间也走了不少弯路，但还是没有找到明确的商业模式，一方面团队的视野格局不够高，另一方面创业路上的坑想都想不到. 折腾了4年半没有挣到钱，心灰意冷今年3月初就从公司出来了。
 
-输入：指我们外部需要提供什么样的参数给这个工具类
-输出：我们通过工具类得到想返回的东西.
-封装，但不要过度封装，区分那些是可变的，那些是不变的，把可变把放在外部作为输入参数传入.
+**人一辈子 不会因为你做过什么而后悔 而是因为你没做过什么而后悔**
 
-理解了上面这些话，你以后封装任何东西都不在话下了.
+对我来说继续上班的意义并不大，而且再过几年就要面临35岁危机，我需要从职场中跳出来, 看看自己到底差什么，是继续上班，还是继续创业，我会给自己一个尝试的机会。
 
-今天我们来做一个Execl的封装，其实在Python中操作Execl还是比较频繁的，所以如果能把这些execl功能封装一下，就比较好办了，
+很多人还没有稳定的收入来源就要创业，而我的打算是先自由职业一段时间有了稳定的收入来源再考虑创业. 因为一旦创业各种杂费都来了，自由职业小规模搞搞，摸清一些坑，做好准备，会在创业道路上少走很多弯路，而且省去一些不必要的开支，也不会耽误别人.
 
-**创建一个Execl对象**
-
-```python
-    def __init__(self, execl_name, sheet_name, row_titles):
-        '''
-        :param execl_name:  文件名，不需要后缀xlsx
-        :param sheet_name:  execl中的sheet名
-        :param row_titles:  execl中每一列的名称
-        '''
-        self.execl_name = u'{}.xlsx'.format(execl_name)
-        self.execl_file = xlwt.Workbook()
-        self.execl_sheet = self.execl_file.add_sheet(sheet_name, cell_overwrite_ok=True)
-        for i in range(0, len(row_titles)):
-            self.execl_sheet.write(0, i, row_titles[i])
-
-```
-
-上面我创建了一个execl,在execl中，文件名，sheet名，与row_titles都是可变的，所以我把这些东西作为参数输入进来.
-
-**把数据写入到execl中**
-
-我只需要把行号，以及每行的数据传入进来，然后保存就行了. 代码很简单，如下
-
-```python
-
-    def write_execl(self, count, data):
-        '''
-        :param count:  execl文件的行数
-        :param data:  要传入的一条数据
-        :return: None
-        '''
-        for j in range(len(data)):
-            self.execl_sheet.write(count, j, data[j])
-
-        self.execl_file.save(self.execl_name)
+在创业那段时间什么都做，也就是那个时候公司有做数据业务的需求，也就是在这个阶段我搞上了Python，而且也是在那个时候，发现Python方面的技术还不是完全成熟，比较好的技术资源也没有找到，于是我就做了现在的公众号---- **Python绿色通道** 当时做公众号的初心就是想做一个比较系统的技术公众号，让有需要的朋友少走一些弯路,也提供一个交流平台.
 
 
-```
-数据写入到execl中，那些是变化的呢, 每行，每列，以及每个单元格等数据都是变化的，我传入count就是让每一行变化,data是每一列的数据，这样就好办了，于是所有的数据都可以对号入座.
 
-**读取execl文件: **
+做公众号的一些心得
 
-我读取execl文件，我只需要输入文件名称，就给我返回数据，这里我把每行数据打包成一个集合，再把所有的集合组成一个新的集合返回.然后我们就可以直接到数据
+[做微信公众号100天了](https://mp.weixin.qq.com/s/kEqdOhGwyO7CiXBUTgyLKw)
 
-```python
+[做公众号一周年](https://mp.weixin.qq.com/s/szGcBYnjDCHe3ficylxY6A)
 
-  def read_execl(self):
-        '''
-        :return:  返回一个execl的二维集合
-        '''
-        all_data = []  # 所有的数据
-        row_data = []  # 每一行数据
-        data = xlrd.open_workbook(self.execl_name)  # 打开execl文件
-        table = data.sheets()[0]  # 通过索引顺序获取table, 一个execl文件一般都至少有一个table
-        for a in range(1, table.nrows):  # 行数据，正好要去掉第1行标题 所以从1开始
-            for b in range(table.ncols):  # 列数据
-                row_data.append(table.cell(a, b).value)  # 根据行与列，可以获取到每一格数据
-
-            all_data.append(row_data)
-            row_data = []  # 清空数据
-
-        return all_data
-
-```
-
-这个返回的集合是集合中的集合，大家直接取数据就行了.
+[我做技术公众号的一些心得](https://mp.weixin.qq.com/s/FDs2ogzkoLctuEWzASasEw)
 
 
-这个execl工具已经封装好了，那么我们如何用呢？ 代码很简单
 
-```python
+部分原创技术文章: 
 
-from ExeclUtils import ExeclUtils
+[本公众号Python优质文章荟萃](https://mp.weixin.qq.com/s/3YYwhwJ4o3AM4fi3WcmKjA)
 
-class Execl_Demo(object):
+[从0到1Python爬虫专题完结版](https://mp.weixin.qq.com/s/BUZhmh-3qIe2HCpZrY4Zig)
 
-    def __init__(self):
-        rows_title = [u'标题', u'时间', u'作者']
-        self.execl_grid_value = []  # 存放每一格的各元素，
-        self.count = 0  # 数据插入从1开始的
-        self.execl_util = ExeclUtils('Python的Execl工具', '工具', rows_title)
+我对技术的一些观点:
 
-    def write_execl(self):
-        titles = ['a', 'b', 'c', 'd']
-        times = ['111', '222', '333', '444']
-        author = ['AAA', 'BBB', 'CCC', 'DDD']
+[就该让技术人富起来](https://mp.weixin.qq.com/s/25iMLl43VKfuKtug8_Ca6A)
 
-        for i in range(0, 4):
-            self.execl_grid_value.append(titles[i])
-            self.execl_grid_value.append(times[i])
-            self.execl_grid_value.append(author[i])
-
-			self.count = self.count + 1
-            self.execl_util.write_execl(self.count, self.execl_grid_value)
-
-           
-            self.execl_grid_value = []
-
-        self.read_execl()
-        pass
-
-    def read_execl(self):
-        print(self.execl_util.read_execl())
-        pass
+[技术不是你一辈子的金饭碗](https://mp.weixin.qq.com/s/NHLiniwp0Vu_UPQX5cPawg)
 
 
-if __name__ == '__main__':
-    e = Execl_Demo()
-    e.write_execl()
 
-~~~~~~~~~~~~~~运行结果~~~~~~~~~~~~~~~~~~~~~~~~~~
-[['a', '111', 'AAA'], ['b', '222', 'BBB'], ['c', '333', 'CCC'], ['d', '444', 'DDD']]
+**我的观点:**
 
-```
+ 我始终认为技术人不能完全沉迷技术，把技术商业化服务于社会才能发挥技术人的最大价值.而且技术人天生有这个优势，一腾讯大佬就说，技术人都是捧着金饭碗要饭的.
 
-是不是很简单，自己也可以尝试着去封装一些工具类.
+
+
+**最后**
+
+限于篇幅，我还有很多不错的文章，现在关注我，还有机会添加我的个人微信,**可以每天看我朋友圈的思考，还可以进行一对一的交流**，坑位有限(微信号有5千人的限制)，大家抓紧啦！
+![个人微信](http://puflgz3c2.bkt.clouddn.com/gerenweixin.jpg)
 
 ### [点击进入技术交流群](http://https://mp.weixin.qq.com/s/3WVnQTOgu66FDg8X-65VvQ)
+
+
+### 微信公众号
+欢迎关注微信公众号 **Python绿色通道**（ID：Python_channel）,每天给你分享Python技术干货，手把手教你学习Python，学习内容循序渐进
+![公众号](http://puflgz3c2.bkt.clouddn.com/%E6%8A%80%E6%9C%AF%E5%85%AC%E4%BC%97%E5%8F%B7.jpg)
+
+### 技术星球
+欢迎关注我的知识星球 技术类 **Python绿色通道** 在这里我会手把手教你学习Python
+![技术星球](http://puflgz3c2.bkt.clouddn.com/%E6%8A%80%E6%9C%AF%E6%98%9F%E7%90%83.jpg)
+
+### 成长星球
+欢迎关注我的知识星球 非技术类 **个体成长** 用程序员的眼光看世界
+![成长星球](http://puflgz3c2.bkt.clouddn.com/%E6%88%90%E9%95%BF%E6%98%9F%E7%90%83.jpg)
+
+
+
+
+
+ 
+
