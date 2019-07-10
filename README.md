@@ -50,30 +50,29 @@
  我始终认为技术人不能完全沉迷技术，把技术商业化服务于社会才能发挥技术人的最大价值.而且技术人天生有这个优势，一腾讯大佬就说，技术人都是捧着金饭碗要饭的.
 
 
+### [点击进入技术交流群](http://https://mp.weixin.qq.com/s/3WVnQTOgu66FDg8X-65VvQ)
+
+### 技术星球
+欢迎关注我的知识星球 技术类 **Python绿色通道** 在这里我会手把手教你学习Python
+[Python绿色通道技术星球](https://t.zsxq.com/nYzNfiI)
+
+### 成长星球
+
+欢迎关注我的知识星球 非技术类 **个体成长** 用程序员的眼光看成长，赚钱，提升认识
+[程序员的成长星球](https://t.zsxq.com/u3jUJ23)
+
+
 
 **最后**
 
 限于篇幅，我还有很多不错的文章，现在关注我，还有机会添加我的个人微信,**可以每天看我朋友圈的思考，还可以进行一对一的交流**，坑位有限(微信号有5千人的限制)，大家抓紧啦！
-![个人微信](http://puflgz3c2.bkt.clouddn.com/gerenweixin.jpg)
+![](http://puflgz3c2.bkt.clouddn.com/gerenweixin.jpg)
 
-### [点击进入技术交流群](http://https://mp.weixin.qq.com/s/3WVnQTOgu66FDg8X-65VvQ)
 
 
 ### 微信公众号
+
 欢迎关注微信公众号 **Python绿色通道**（ID：Python_channel）,每天给你分享Python技术干货，手把手教你学习Python，学习内容循序渐进
-![公众号](http://puflgz3c2.bkt.clouddn.com/%E6%8A%80%E6%9C%AF%E5%85%AC%E4%BC%97%E5%8F%B7.jpg)
+![](http://puflgz3c2.bkt.clouddn.com/%E6%8A%80%E6%9C%AF%E5%85%AC%E4%BC%97%E5%8F%B7.jpg)
 
-### 技术星球
-欢迎关注我的知识星球 技术类 **Python绿色通道** 在这里我会手把手教你学习Python
-![技术星球](http://puflgz3c2.bkt.clouddn.com/%E6%8A%80%E6%9C%AF%E6%98%9F%E7%90%83.jpg)
-
-### 成长星球
-欢迎关注我的知识星球 非技术类 **个体成长** 用程序员的眼光看世界
-![成长星球](http://puflgz3c2.bkt.clouddn.com/%E6%88%90%E9%95%BF%E6%98%9F%E7%90%83.jpg)
-
-
-
-
-
- 
 
